@@ -1,0 +1,15 @@
+# LLM app: RAG with LangGraph + OpenAI
+langgraph==1.2.20
+langchain-core==1.7.6
+langchain-openai==1.7.4
+python-dotenv==1.2.4
+
+# Guardrails (Module 3)
+nemoguardrails==0.24.1
+
+# Web app (app.py)
+streamlit==1.66.1
+
+# Jupyter notebooks
+ipykernel==7.4.0
+nbformat==5.11.1
