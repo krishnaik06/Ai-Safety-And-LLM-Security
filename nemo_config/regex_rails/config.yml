@@ -1,0 +1,28 @@
+# Regex rails: the cheapest rail. No LLM call, only pattern matching (about 1 ms).
+# Good for blocking known, exact attack phrases. Easy to bypass by rewording.
+
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+rails:
+  config:
+    regex_detection:
+      input:
+        case_insensitive: true
+        patterns:
+          - 'ignore (all )?(the )?(previous |above |prior )?instructions'
+          - 'system prompt'
+      output:
+        case_insensitive: true
+        patterns:
+          # Any link that is NOT on acmecloud.example (blocks evil.example, phishing links, image beacons)
+          - 'https?://(?!([a-z0-9-]+\.)*acmecloud\.example)'
+
+  input:
+    flows:
+      - regex check input
+  output:
+    flows:
+      - regex check output
